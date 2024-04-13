@@ -26,7 +26,7 @@ router.get('/viewAllUsers', (req,res) =>{
 })
 
 router.get('/currentUser' ,authenticate, (req,res) => {
-    res.status(200).send(req.rootUser)
+    return res.status(200).send(req.rootUser)
 })
 
 router.get('/checkLoggedUser' , authenticate, (req,res) => {

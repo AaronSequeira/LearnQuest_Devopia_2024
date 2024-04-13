@@ -42,15 +42,11 @@ const Navbar = () => {
 
 
   return (
-    <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6 ">
-
+    <div className="flex md:flex-row justify-end flex-col-reverse  mb-[35px] gap-6 ">
       <div className="sm:flex hidden flex-row justify-end gap-4">
-        
         { state ? 
         <>
-
           <AvatarMenu/>
-          
         </> :
           <>
             <Modal 
