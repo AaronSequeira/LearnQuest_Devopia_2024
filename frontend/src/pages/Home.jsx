@@ -15,13 +15,13 @@ const Home = () => {
     <>
       <div className="flex justify-between items-center p-4">
         <div className="w-1/2">
-          <h1 className="text-8xl font-bold">Welcome to Catalyst</h1>
+          <h1 className="text-8xl font-bold">Welcome to LearnQuest</h1>
           <p className="mt-4 font-bold text-3xl"> </p>
           <p className="mt-2 text-[#1dc071] font-extrabold text-6xl">
-          Where Science
+          Unlock Your
           <Typewriter
               options={{
-                strings: ['innovates.', 'discovers.', 'thrives.'],
+                strings: ['Potential..', 'Skills..', 'Abilities..'],
                 autoStart: true,
                 loop: true,
               }}
@@ -30,31 +30,11 @@ const Home = () => {
         <div className='flex pt-12 gap-4'>
         <CustomButton 
                 btnType="button"
-                title='Daily Quiz ->' 
-                styles='border-[#1dc071] border-[2px]'
+                title='Take Our Quiz ->' 
+                styles='border-[#1dc071] text-[20px] border-[2px]'
                 onClick={() => {} }              
                 handleClick={() => { 
                   navigate('/quiz');
-                
-                }}
-              />
-            <CustomButton 
-                btnType="button"
-                title='Create a Diagram ->' 
-                styles='border-[#1dc071] border-[2px]'
-                onClick={() => {} }              
-                handleClick={() => { 
-                  navigate('/docs');
-                
-                }}
-              />
-              <CustomButton 
-                btnType="button"
-                title='Check Leaderboard ->' 
-                styles='border-[#1dc071] border-[2px]'
-                onClick={() => {} }              
-                handleClick={() => { 
-                  navigate('/leaderboard');
                 
                 }}
               />
