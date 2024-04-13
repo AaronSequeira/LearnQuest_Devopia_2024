@@ -20,6 +20,7 @@
   "homepage": "https://github.com/as100904/Crowdfunding-App#readme",
   "dependencies": {
     "buffer": "^6.0.3",
+    "chart.js": "^4.4.2",
     "concurrently": "^8.2.2",
     "file-saver": "^2.0.5",
     "fs": "^0.0.1-security",
