@@ -2,8 +2,11 @@ const express = require('express')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
-const router = express.Router()
+const dotenv = require('dotenv')
 
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const router = express.Router()
+const genAI = new GoogleGenerativeAI(`${process.env.API_KEY}`);
 
 require("../db/connnection");
 const User = require('../model/userSchema');
@@ -50,10 +53,19 @@ router.get('/logout' , (req,res) => {
     console.log(res.cookie)
 })
 
+router.post('/prompt',async (req,res) => {
+    const {prompt} = req.body
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" , fetch});
+    const result = await model.generateContent(prompt);
+    const response = result.response;
+    const text = response.text();
+    return res.status(200).json({message: text})
+})
+
 
 
 router.post('/register' , (req , res) => {
-    const { name , email , pwd , cpwd, age, role } = req.body
+    const { name , email , pwd , cpwd, grade, role } = req.body
     
     //validation
     function validateEmail(email) {
@@ -76,7 +88,7 @@ router.post('/register' , (req , res) => {
                 return res.status(401).json({message: "Confirm Password not equal"})
             }
 
-            const user = new User({name , email, pwd, cpwd, age, role})
+            const user = new User({name , email, pwd, cpwd, grade, role})
             
             user.save().then(() => {
                 res.status(201).json({message: "User registered Succesfully"})
