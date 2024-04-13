@@ -30,6 +30,26 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    abilityScore:{
+        type: Number,
+        default: 0,
+    },
+    lackingTopics:{
+        stringArrayField: [String],
+        default: ['', '', ''],
+    },
+    wrongans:{
+        type: Number,
+        default: 0,
+    },
+    rightans:{
+        type: Number,
+        default: 0,
+    },
+    pred:{
+        type: Number,
+        default: 0,
+    },
     tokens:[
         {
             token:{
