@@ -50,7 +50,7 @@ export default function AvatarMenu() {
             onPress={() => {
                 Logout();
                 navigate('/')
-                dispatch({type: "USER" , payload: false })
+                dispatch({type: "Student" , payload: false })
                 }}
             >
             Log Out

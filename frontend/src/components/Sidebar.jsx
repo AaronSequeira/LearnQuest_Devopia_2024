@@ -40,7 +40,7 @@ const Sidebar = () => {
                   if(!link.disabled && link.name === 'Logout'){
                     if(state){
                       Logout();
-                      dispatch({type: "USER" , payload : false});
+                      dispatch({type: "Student" , payload : false});
                       navigate('/');
                     }
                     else{
