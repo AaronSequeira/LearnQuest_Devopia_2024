@@ -22,9 +22,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    points:{
+    age:{
         type: Number,
-        default: 125
+        required:true,
+    },
+    role:{
+        type: String,
+        required: true
     },
     tokens:[
         {

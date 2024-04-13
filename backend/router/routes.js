@@ -53,7 +53,7 @@ router.get('/logout' , (req,res) => {
 
 
 router.post('/register' , (req , res) => {
-    const { name , email , pwd , cpwd } = req.body
+    const { name , email , pwd , cpwd, age, role } = req.body
     
     //validation
     function validateEmail(email) {
@@ -76,7 +76,7 @@ router.post('/register' , (req , res) => {
                 return res.status(401).json({message: "Confirm Password not equal"})
             }
 
-            const user = new User({name , email, pwd, cpwd})
+            const user = new User({name , email, pwd, cpwd, age, role})
             
             user.save().then(() => {
                 res.status(201).json({message: "User registered Succesfully"})
@@ -111,7 +111,7 @@ router.post('/login' , (req , res) => {
                         if(!isMatch)
                             res.status(401).json({message: "Wrong Password"})
                         else
-                            res.status(200).json({message: "Login Successfull"})
+                            res.status(200).json({message: "Login Successfull", role: userExist.role})
                     }).catch(e => console.log(e))
 
                 const token = await userExist.generateAuthToken();

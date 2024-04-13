@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Checkbox, Input, Link} from "@nextui-org/react";
+import {Select, SelectSection, SelectItem} from "@nextui-org/react";
 import {MailIcon} from '../assets';
 import {LockIcon} from '../assets';
 import axios from "axios";
@@ -8,7 +9,10 @@ import {ToastContainer, toast} from 'react-toastify';
 import Login from "./Modal";
 
 export default function App({handleChange , onClose, setFormType, error}) {
-
+   const roles = [
+    {label: "Student", value: "Student"},
+    {label: "Teacher", value: "Teacher"},
+  ]
   return (
     <>
       <Input
@@ -60,6 +64,29 @@ export default function App({handleChange , onClose, setFormType, error}) {
         color={error ? 'danger' : 'success'}
         onChange={(e) => {handleChange('cpwd',e)}}
       />
+
+      <Input
+        isClearable
+        label="Age"
+        placeholder="Enter your age"
+        variant="bordered"
+        color="success"
+        onChange={(e) => {handleChange('age',e)}}
+      />
+
+      <Select
+        isRequired
+        label="Role"
+        placeholder="Choose your role"
+        className="max-w-xs"
+        onChange={(e) => handleChange('role', e)}
+      >
+        {roles.map((role) => (
+          <SelectItem key={role.value} value={role.value}>
+            {role.label}
+          </SelectItem>
+        ))}
+      </Select>
 
       <div className="flex py-2 px-1 justify-between">
         <Checkbox

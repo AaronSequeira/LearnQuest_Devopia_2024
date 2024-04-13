@@ -25,7 +25,9 @@ export default function App(props) {
     name:"",
     email: "",
     pwd: "",
-    cpwd:""
+    cpwd:"",
+    age:"",
+    role:""
   })
 
   useEffect(() =>{
@@ -100,7 +102,7 @@ export default function App(props) {
     axios.post('http://localhost:8000/login' , loginForm ,{withCredentials:true , credentials: "include"})
       .then((res) => {
         if(res.status === 200){
-          dispatch({type: "USER" , payload: true})
+          dispatch({type: res.data.role , payload: true})
           toast.success(res.data.message)
           setSuccess(true)
           setError(false)
