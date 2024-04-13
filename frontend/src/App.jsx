@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Sidebar, Navbar } from './components';
-import { Home, Profile, CreateCampaign, CampaignDetails, UserDonation, Search, Update } from './pages'
+import { Home, Profile, CreateCampaign, CampaignDetails, UserDonation, Search, Update, Dashboard } from './pages'
 import { initialState , reducer } from './UseReducer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,6 +11,7 @@ import Leaderoard from './pages/Leaderoard';
 import Duel from './pages/Duel';
 import Docs from './pages/Docs';
 import DuelQuiz from './pages/DuelQuiz';
+import Recommender from './pages/Recommender';
 
 
 export const UserContext = createContext();
@@ -31,13 +32,11 @@ const App = () => {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/lookup" element={<Lookup/>} />
-            <Route path="/duel" element={<Duel/>}/>
-            <Route path="/leaderboard" element={<Leaderoard/>}/>
             <Route path="/quiz" element={<Quiz/>} />
-            <Route path="/docs" element={<Docs/>} />
-            <Route path="/duelquiz" element={<DuelQuiz/>} />
-          </Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/recommender" element={<Recommender />} />
+            <Route path="/profile" element={<Dashboard />} />
+         </Routes>
           
         </div>
         <ToastContainer

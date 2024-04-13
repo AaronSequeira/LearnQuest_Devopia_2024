@@ -1,30 +1,26 @@
-import { createCampaign, dashboard, logout, payment, profile, Quiz, Leaderboard, Duel, Atom } from '../assets';
+import { createCampaign,bulbs,home,prof, dashboard, logout, payment, profile, Quiz, Leaderboard, Duel, Atom } from '../assets';
+
 
 export const navlinks = [
   {
     name: 'Home',
-    imgUrl: dashboard,
+    imgUrl: home,
     link: '/',
   },
   {
-    name: 'Diagram',
-    imgUrl: Atom,
-    link: '/docs',
+    name: 'Dashboard',
+    imgUrl: dashboard,
+    link: '/dashboard',
   },
   {
-    name: 'Quiz',
-    imgUrl: Quiz,
+    name: 'Recommeder',
+    imgUrl: bulbs,
     link: '/quiz',
   },
   {
-    name: 'Duel',
-    imgUrl: Duel,
-    link: '/duel',
-  },
-  {
-    name: 'Leaderboard',
-    imgUrl: Leaderboard,
-    link: '/leaderboard',
+    name: 'Profile',
+    imgUrl: prof,
+    link: '/quiz',
   },
   {
     name: 'Logout',

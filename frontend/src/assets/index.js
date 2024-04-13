@@ -19,6 +19,10 @@ import Quiz from './quiz.svg'
 import Leaderboard from './leaderboard.svg'
 import Duel from './duel.svg'
 import Atom from './atom.svg'
+import userprofile from './userprofile.svg'
+import bulbs from "./bulbs.svg"
+import home from "./home.svg"
+import prof from "./prof.svg"
 
 export {
   NameIcon,
@@ -41,5 +45,9 @@ export {
   Quiz,
   Leaderboard,
   Duel,
-  Atom
+  Atom,
+  userprofile,
+  bulbs,
+  home,
+  prof
 };
