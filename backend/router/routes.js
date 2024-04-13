@@ -7,6 +7,7 @@ const dotenv = require('dotenv')
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const router = express.Router()
 const genAI = new GoogleGenerativeAI(`${process.env.API_KEY}`);
+const model = genAI.getGenerativeModel({ model: "gemini-pro" , fetch});
 
 require("../db/connnection");
 const User = require('../model/userSchema');
@@ -53,15 +54,42 @@ router.get('/logout' , (req,res) => {
     console.log(res.cookie)
 })
 
-router.post('/prompt',async (req,res) => {
-    const {prompt} = req.body
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" , fetch});
+router.post('/gen', authenticate, async (req,res) => {
+    const {syllabus, quiz_skel} = req.body;
+    const grade = req.rootUser.grade
+    console.log(syllabus[grade])
+    const prompt = `This is the given syllabus for grade ${grade} ${syllabus[grade]} , create a 15 question quiz such that it covers all the topics that are present in grade ${grade} in this json format given below ${quiz_skel} and provide the question followed by 4 choices in a list and the correct option in form of the choice string`
     const result = await model.generateContent(prompt);
     const response = result.response;
-    const text = response.text();
-    return res.status(200).json({message: text})
+    var text = response.text();
+    console.log(text)
+    text = text.slice(7, text.length - 3)
+    return res.status(200).json({message: JSON.parse(text)})
 })
 
+router.post('/ans-analysis',authenticate, async (req,res) => {
+    const {questions, wrong_ans, results} = req.body
+    const prompt = `these are the questions ${questions} and these are the questions answered wrong ${wrong_ans}, give me the ability score from 1-10 with two decimal places using key ability_score and topics in math which the user is lacking in a list using key lacking_topics and provide the answers in json format.`
+    const result = await model.generateContent(prompt);
+    const response = result.response;
+    var text = response.text();
+    console.log(text)
+    text = text.slice(7, text.length - 3)
+    text = JSON.parse(text)
+    User.updateOne(
+        {_id: req.UserID}, 
+        {
+            abilityScore: text.ability_score,
+            lackingTopics : text.lacking_topics,
+            wrongans: results.wrongAnswers,
+            rightans: results.correctAnswers
+        }
+        )
+        .then(()=>{
+            return res.status(201).json({message : text, result:`Successfully updated ${req.rootUser.name}'s Results.`})
+        })
+        .catch((e)=>{console.log(e)})
+})
 
 
 router.post('/register' , (req , res) => {
