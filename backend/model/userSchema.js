@@ -35,8 +35,10 @@ const userSchema = new mongoose.Schema({
         default: 0,
     },
     lackingTopics:{
-        stringArrayField: [String],
-        default: ['', '', ''],
+        lackingTopics: {
+            type: [String],
+            default: ["", "", "", "", ""]
+          }
     },
     wrongans:{
         type: Number,

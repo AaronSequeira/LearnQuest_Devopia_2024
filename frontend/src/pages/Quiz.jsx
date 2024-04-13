@@ -224,9 +224,10 @@ const Quiz = () => {
       setActiveQuestion(0);
       setShowResult(true);
       setNotFinished(false);
-      axios.post('http://localhost:8000/ans-analysis', {questions: Quizz, wrong_ans: wrongQuestions}, {withCredentials: true})
+      axios.post('http://localhost:8000/ans-analysis', {questions: Quizz, wrong_ans: wrongQuestions,results:result}, {withCredentials: true})
       .then((res) => {
         console.log(res.data);
+        toast.success(res.data.result)
       })
       .catch((e) => {
         toast.error("Error : " + e);

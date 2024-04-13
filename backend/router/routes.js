@@ -67,15 +67,28 @@ router.post('/gen', authenticate, async (req,res) => {
     return res.status(200).json({message: JSON.parse(text)})
 })
 
-router.post('/ans-analysis',async (req,res) => {
-    const {questions, wrong_ans} = req.body
+router.post('/ans-analysis',authenticate, async (req,res) => {
+    const {questions, wrong_ans, results} = req.body
     const prompt = `these are the questions ${questions} and these are the questions answered wrong ${wrong_ans}, give me the ability score from 1-10 with two decimal places using key ability_score and topics in math which the user is lacking in a list using key lacking_topics and provide the answers in json format.`
     const result = await model.generateContent(prompt);
     const response = result.response;
     var text = response.text();
     console.log(text)
     text = text.slice(7, text.length - 3)
-    return res.status(200).json({message: JSON.parse(text)})
+    text = JSON.parse(text)
+    User.updateOne(
+        {_id: req.UserID}, 
+        {
+            abilityScore: text.ability_score,
+            lackingTopics : text.lacking_topics,
+            wrongans: results.wrongAnswers,
+            rightans: results.correctAnswers
+        }
+        )
+        .then(()=>{
+            return res.status(201).json({message : text, result:`Successfully updated ${req.rootUser.name}'s Results.`})
+        })
+        .catch((e)=>{console.log(e)})
 })
 
 
