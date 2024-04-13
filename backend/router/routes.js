@@ -77,12 +77,21 @@ router.post('/ans-analysis',authenticate, async (req,res) => {
     text = text.slice(7, text.length - 3)
     text = JSON.parse(text)
     User.updateOne(
+        { _id: req.UserID },
+        { $set: { "lackingTopics": text.lacking_topics } }
+      )
+        .then(() => {
+          console.log('updating lacking topics');
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    User.updateOne(
         {_id: req.UserID}, 
         {
             abilityScore: text.ability_score,
-            lackingTopics : text.lacking_topics,
             wrongans: results.wrongAnswers,
-            rightans: results.correctAnswers
+            rightans: results.correctAnswers,
         }
         )
         .then(()=>{
