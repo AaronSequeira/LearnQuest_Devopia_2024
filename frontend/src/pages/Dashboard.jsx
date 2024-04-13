@@ -23,14 +23,13 @@ const Dashboard = () => {
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
-      axios
-        .get(`http://localhost:8000/currentUser`)
-        .then((res) => {
-          console.log(res.abilityScore);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+    axios.get(`http://localhost:8000/checkLoggedUser`,{withCredentials :true})
+      .then((res) => {
+        console.log(res.data.user.abilityScore);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
       setIsLoading(false);
     }, 700);
   }, []);

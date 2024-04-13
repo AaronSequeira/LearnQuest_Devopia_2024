@@ -244,7 +244,8 @@ const Quiz = () => {
 
   return (
     <div className="flex justify-center">
-      <h1 className="font-epilogue font-semibold font-['Ubuntu'] text-xl pb-4 md:text-4xl text-white text-center md:text-left">Daily Quiz</h1>
+      <h1 className="font-epilogue font-semibold font-['Ubuntu'] text-xl pb-4 md:text-4xl text-white text-center md:text-left">Quiz</h1>
+      <br/>
       {isLoading && (
           <img src={loader} alt="loader" className="w-[100px] h-[100px] object-contain" />
         )}
