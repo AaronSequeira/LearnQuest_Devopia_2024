@@ -26,7 +26,7 @@ export default function App(props) {
     email: "",
     pwd: "",
     cpwd:"",
-    age:"",
+    grade:"",
     role:""
   })
 

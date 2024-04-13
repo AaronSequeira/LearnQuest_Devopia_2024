@@ -23,6 +23,7 @@
     "concurrently": "^8.2.2",
     "file-saver": "^2.0.5",
     "fs": "^0.0.1-security",
+    "nodemon": "^3.1.0",
     "react-sketch-canvas": "^6.2.0",
     "react-typed": "^2.0.12",
     "typewriter-effect": "^2.21.0",
