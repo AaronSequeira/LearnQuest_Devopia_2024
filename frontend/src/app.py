@@ -29,10 +29,14 @@ def get_topic_url_dict(list_of_topic):
 
 @app.route('/recommend', methods=['POST'])
 def get_topic_url_dict_route():
-    data = request.get_json() 
-    list_of_topic = data['lackingTopics']
-    result_dict = get_topic_url_dict(list_of_topic)
-    return jsonify(result_dict)
+    try:
+        data = request.get_json()
+        list_of_topic = data
+        result_dict = get_topic_url_dict(list_of_topic)
+        return jsonify(result_dict)
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
 
 if __name__ == '__main__':
     app.run(port=8080,debug=True)

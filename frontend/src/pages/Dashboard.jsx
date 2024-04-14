@@ -93,7 +93,7 @@ const Dashboard = () => {
                   <div key={index} style={{margin: "5px", padding: "5px", borderRadius: "5px", color:"#1ec173",fontSize: "1.4rem" }}>{area}</div>
                 ))}
                     <button onClick={()=>{
-                      navigate('/recommender', {lackingTopics: stat.lackingAreas})
+                      navigate('/recommender', {state: stat.lackingAreas})
                     }} style={{ backgroundColor: "#1ec173", color: "#fff", padding: "10px 20px", borderRadius: "5px", marginTop: "20px", cursor: "pointer" }}>View Resources</button>
 
               </CardBody>

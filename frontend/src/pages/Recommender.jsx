@@ -3,10 +3,16 @@ import { React, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const Recommender = () => {
-  const { lackingTopics } = useLocation()
+  const { state } = useLocation()
   useEffect(()=>{
     console.log(state)
-    axios.post('http://127.0.0.1:8080/recommend', lackingTopics)
+    const serializedData = JSON.stringify(state);
+
+axios.post('http://127.0.0.1:8080/recommend', serializedData, {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
     .then((res)=>{console.log(res.data)})
     .catch((e)=>{console.log(e)})
   })
