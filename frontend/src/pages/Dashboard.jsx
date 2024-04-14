@@ -88,6 +88,8 @@ const Dashboard = () => {
                 {stat.lackingAreas.map((area, index) => (
                   <div key={index} style={{margin: "5px", padding: "5px", borderRadius: "5px", color:"#1ec173",fontSize: "1.4rem" }}>{area}</div>
                 ))}
+                    <button style={{ backgroundColor: "#1ec173", color: "#fff", padding: "10px 20px", borderRadius: "5px", marginTop: "20px", cursor: "pointer" }}>View Resources</button>
+
               </CardBody>
             </Card>
           </div>
