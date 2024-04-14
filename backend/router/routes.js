@@ -86,12 +86,14 @@ router.post('/ans-analysis',authenticate, async (req,res) => {
         .catch((e) => {
           console.log(e);
         });
+    const topics = text.lacking_topics
     User.updateOne(
         {_id: req.UserID}, 
         {
             abilityScore: text.ability_score,
             wrongans: results.wrongAnswers,
             rightans: results.correctAnswers,
+            pred: (text.ability_score + (10 - topics.length)) * 10
         }
         )
         .then(()=>{

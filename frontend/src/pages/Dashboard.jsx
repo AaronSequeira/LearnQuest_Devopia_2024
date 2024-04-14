@@ -69,6 +69,8 @@ const Dashboard = () => {
               <Card style={{ width: "250px", height: "150px", border: "3px solid #1ec173", marginLeft: "10px", backgroundColor: "#13131a" }}>
                 <CardBody style={{ fontSize: "1.2rem", textAlign: "center" }}>
                   Predicted Future Score:
+                  <br />
+                  <span style={{ fontSize: "3rem", fontWeight: "bold",paddingTop:"1rem" }}>{stat.abilityScore}</span>
                 </CardBody>
               </Card>
             </div>

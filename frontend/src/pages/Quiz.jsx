@@ -5,8 +5,10 @@ import './quiz.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { loader } from '../assets';
+import { useNavigate } from 'react-router-dom';
 
 const Quiz = () => {
+  const navigate = useNavigate()
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [showResult, setShowResult] = useState(false);
@@ -282,7 +284,9 @@ const Quiz = () => {
             <p>Correct Answers:<span> {result.correctAnswers}</span></p>
             <p>Wrong Answers:<span> {result.wrongAnswers}</span></p>
             <p>Points Earned:<span> {result.correctAnswers * 20}</span></p>
-            <button>View Results</button>
+            <button onClick={() => {
+              navigate('/dashboard')
+            }}>View Results</button>
           </div>
         ): null}
       </div>
