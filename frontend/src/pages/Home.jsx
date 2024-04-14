@@ -41,7 +41,7 @@ const Home = () => {
         </div>
         </div>
         <div className="w-2/5 flex justify-end">
-          <img src='logo1.png' alt="Logo" className="max-w-full" />
+          <img src='learnlogo.png' alt="Logo" className="max-w-full" />
         </div>
       </div>
     </>

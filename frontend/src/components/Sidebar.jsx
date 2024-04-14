@@ -24,7 +24,7 @@ const Sidebar = () => {
   return (
     <div className="flex justify-between items-center flex-col sticky top-1 h-[95vh]">
       <Link to="/">
-        <img src={logo} className='w-[80px] h-[80px]'></img>
+        <img src="learnlogo.png" className='w-[80px] h-[80px]'></img>
       </Link>
 
       <div className="flex-1 flex flex-col justify-between items-center bg-[#1c1c24] rounded-[20px] w-[100px] py-4 mt-6">
