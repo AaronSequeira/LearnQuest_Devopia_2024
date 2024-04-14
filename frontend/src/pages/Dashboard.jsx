@@ -13,12 +13,14 @@ import {
   Line,
 } from "recharts";
 import { Card, CardBody } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true);
   const [stat, setStat] = useState({
     abilityScore: 0,
-    lackingAreas: [],
+    lackingAreas: [''],
     predictiveScore: 0,
   });
 
@@ -70,7 +72,7 @@ const Dashboard = () => {
                 <CardBody style={{ fontSize: "1.2rem", textAlign: "center" }}>
                   Predicted Future Score:
                   <br />
-                  <span style={{ fontSize: "3rem", fontWeight: "bold",paddingTop:"1rem" }}>{stat.abilityScore}</span>
+                  <span style={{ fontSize: "3rem", fontWeight: "bold",paddingTop:"1rem" }}>{stat.predictiveScore}</span>
                 </CardBody>
               </Card>
             </div>
@@ -90,7 +92,9 @@ const Dashboard = () => {
                 {stat.lackingAreas.map((area, index) => (
                   <div key={index} style={{margin: "5px", padding: "5px", borderRadius: "5px", color:"#1ec173",fontSize: "1.4rem" }}>{area}</div>
                 ))}
-                    <button style={{ backgroundColor: "#1ec173", color: "#fff", padding: "10px 20px", borderRadius: "5px", marginTop: "20px", cursor: "pointer" }}>View Resources</button>
+                    <button onClick={()=>{
+                      navigate('/recommender', {lackingTopics: stat.lackingAreas})
+                    }} style={{ backgroundColor: "#1ec173", color: "#fff", padding: "10px 20px", borderRadius: "5px", marginTop: "20px", cursor: "pointer" }}>View Resources</button>
 
               </CardBody>
             </Card>

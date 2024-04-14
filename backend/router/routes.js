@@ -93,7 +93,7 @@ router.post('/ans-analysis',authenticate, async (req,res) => {
             abilityScore: text.ability_score,
             wrongans: results.wrongAnswers,
             rightans: results.correctAnswers,
-            pred: (text.ability_score + (10 - topics.length)) * 10
+            pred: text.ability_score + (10 - topics.length) * 10
         }
         )
         .then(()=>{

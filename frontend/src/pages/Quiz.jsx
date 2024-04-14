@@ -251,7 +251,7 @@ const Quiz = () => {
       {isLoading && (
           <img src={loader} alt="loader" className="w-[100px] h-[100px] object-contain" />
         )}
-      <div className={`quiz-container ${isLoading ? 'hidden': null } -ml-[200px]`}>
+      <div className={`quiz-container ${isLoading ? 'hidden': null } -ml-[250px]`}>
         {!isLoading ? !showResult ? (
           <div>
             <div>

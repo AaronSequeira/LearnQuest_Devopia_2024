@@ -1,4 +1,15 @@
+import axios from "axios";
+import { React, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 const Recommender = () => {
+  const { lackingTopics } = useLocation()
+  useEffect(()=>{
+    console.log(state)
+    axios.post('http://127.0.0.1:8080/recommend', lackingTopics)
+    .then((res)=>{console.log(res.data)})
+    .catch((e)=>{console.log(e)})
+  })
   return (
     <div>
       <div className="aspect-video">
