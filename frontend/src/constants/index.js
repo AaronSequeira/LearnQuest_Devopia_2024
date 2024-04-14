@@ -18,8 +18,8 @@ export const navlinks = [
     link: '/quiz',
   },
   {
-    name: 'Profile',
-    imgUrl: prof,
+    name: 'Quiz',
+    imgUrl: Quiz,
     link: '/quiz',
   },
   {

@@ -31,7 +31,7 @@ const Home = () => {
         <CustomButton 
                 btnType="button"
                 title='Take Our Quiz ->' 
-                styles='border-[#1dc071] text-[20px] border-[2px]'
+                styles='border-[#1dc071] text-[18px] border-[2px]'
                 onClick={() => {} }              
                 handleClick={() => { 
                   navigate('/quiz');
